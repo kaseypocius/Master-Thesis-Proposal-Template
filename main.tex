@@ -11,12 +11,11 @@
 
 \ifdefined\withbiblatex 
 \usepackage[
-    backend=biber,
     style=apa,
-    citestyle=authoryear
 ]{biblatex}
 \addbibresource{references.bib}
-\AtEveryBibitem{% Clean up the bibtex rather than editing it
+% Programatically clean up the bibliography here, rather than manually editing the BibTeX file
+\AtEveryBibitem{%
 \clearfield{doi}
 \clearfield{pages}
   \ifentrytype{inproceedings}{%true
@@ -33,7 +32,7 @@
     }{%false
   }
 }
-\renewcommand{\cite}{\parencite}
+\renewcommand{\cite}{\parencite} % format citations between parentheses
 \else 
 \usepackage{apacite}
 \fi
